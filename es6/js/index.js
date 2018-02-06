@@ -4,14 +4,28 @@
 // Class Puppy
 class Puppy {
     // Constructor: takes in an img url, and a sound
-
+    constructor(img = "http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/thumbs/thumbs_impossibly-cute-puppy-8.jpg"
+        , sound = "bark") {
+        this.img = img;
+        this.sound = sound;
+    }
+    bark() {
+        responsiveVoice.speak(this.sound, "Slovak Female");
+    }
+    render() {
+        let puppyCard = $('<div>');
+        puppyCard.css('background-image', `url(${this.img})`);
+        puppyCard.attr('class', 'puppyCard col-sm-4');
+        return puppyCard;
+    }
     // Method for "speaking" using responsiveVoice
 
     // Render a Div that you can click on to bark
 
 }
-
-
+let myPuppy = new Puppy('http://cdn3-www.dogtime.com/assets/uploads/gallery/30-impossibly-cute-puppies/thumbs/thumbs_impossibly-cute-puppy-8.jpg', 'woof');
+myPuppy.bark();
+$('body').append(myPuppy.render());
 // Class Form
 class PuppyForm {
     // Contructor: takes in a callback function you can do
